@@ -19,12 +19,17 @@ export const itemType = defineType({
       validation: rule => rule.required(),
     }),
     defineField({
-      title: "Images",
-      name: "image",
+      title: "Thumbnail",
+      name: "thumbnail",
+      type: "image",
+      validation: rule => rule.required()
+    }),
+    defineField({
+      title: "More images",
+      name: "images",
       type: "array",
       of: [{ type: "image" }],
       options: { layout: "grid" },
-      validation: rule => rule.required()
     }),
     defineField({
       title: 'Text', 
@@ -33,4 +38,11 @@ export const itemType = defineType({
       of: [{type: 'block'}]
     })
   ],
+  preview: {
+    select: {
+      title: 'name',
+      subtitle: 'category.name',
+      media: 'thumbnail'
+    }
+  }
 });
