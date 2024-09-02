@@ -20,17 +20,19 @@ export default async function IndexPage() {
   });
 
   return (
-    <main className="flex bg-gray-100 min-h-screen flex-col p-24 gap-12">
+    <main className="flex bg-gray-100 min-h-screen flex-col gap-12 sm:p-12 md:p-16 lg:p-24 ">
       <ul className="grid grid-cols-1 gap-12">
         {categories &&
           categories.map((category, i) => (
             <li className="bg-white p-4 rounded-lg" key={category._id}>
               <h2 className="text-xl font-semibold">{category.name}</h2>
-              <ul
-                className="mt-4 grid gap-8 grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
-              >
+
+              <ul className="mt-4 grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 place-items-center">
                 {category.items.map((item: SanityDocument) => (
-                  <li key={item._id + " " + i} className="aspect-square relative">
+                  <li
+                    key={item._id + " " + i}
+                    className="aspect-square relative w-full"
+                  >
                     <Image
                       src={urlFor(item.thumbnail)}
                       alt={item.name || category.name}
